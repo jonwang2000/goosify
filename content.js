@@ -1,6 +1,7 @@
 var goosePicture = "https://upload.wikimedia.org/wikipedia/commons/e/e0/Canada_goose_head_detail.JPG";
 var spanPicture = 'url("https://upload.wikimedia.org/wikipedia/commons/e/e0/Canada_goose_head_detail.JPG")';
 
+// Array of animals
 var animals = [
   "Aardvark",
   "Albatross",
@@ -28,7 +29,6 @@ var animals = [
   "Cat",
   "Caterpillar",
   "Cattle",
-  "Chamois",
   "Cheetah",
   "Chicken",
   "Chimpanzee",
@@ -36,28 +36,21 @@ var animals = [
   "Cobra",
   "Cockroach",
   "Cod",
-  "Cormorant",
   "Coyote",
   "Crab",
   "Crane",
   "Crocodile",
   "Crow",
-  "Curlew",
   "Deer",
   "Dinosaur",
   "Dog",
   "Dogfish",
   "Dolphin",
-  "Dotterel",
   "Dove",
   "Dragonfly",
   "Duck",
-  "Dugong",
-  "Dunlin",
   "Eagle",
-  "Echidna",
   "Eel",
-  "Eland",
   "Elephant",
   "Elk",
   "Emu",
@@ -69,21 +62,15 @@ var animals = [
   "Fly",
   "Fox",
   "Frog",
-  "Gaur",
   "Gazelle",
   "Gerbil",
   "Giraffe",
   "Gnat",
-  "Gnu",
   "Goat",
-  "Goldfinch",
   "Goldfish",
   "Goose",
   "Gorilla",
-  "Goshawk",
   "Grasshopper",
-  "Grouse",
-  "Guanaco",
   "Gull",
   "Hamster",
   "Hare",
@@ -97,19 +84,12 @@ var animals = [
   "Human",
   "Hummingbird",
   "Hyena",
-  "Ibex",
   "Ibis",
   "Jackal",
   "Jaguar",
-  "Jay",
   "Jellyfish",
   "Kangaroo",
-  "Kingfisher",
   "Koala",
-  "Kookabura",
-  "Kouprey",
-  "Kudu",
-  "Lapwing",
   "Lark",
   "Lemur",
   "Leopard",
@@ -117,15 +97,10 @@ var animals = [
   "Llama",
   "Lobster",
   "Locust",
-  "Loris",
-  "Louse",
-  "Lyrebird",
   "Magpie",
   "Mallard",
   "Manatee",
-  "Mandrill",
   "Mantis",
-  "Marten",
   "Meerkat",
   "Mink",
   "Mole",
@@ -136,45 +111,32 @@ var animals = [
   "Mouse",
   "Mule",
   "Narwhal",
-  "Newt",
-  "Nightingale",
   "Octopus",
-  "Okapi",
   "Opossum",
-  "Oryx",
   "Ostrich",
   "Otter",
   "Owl",
   "Oyster",
   "Panther",
   "Parrot",
-  "Partridge",
   "Peafowl",
   "Pelican",
   "Penguin",
-  "Pheasant",
   "Pig",
   "Pigeon",
   "Pony",
   "Porcupine",
   "Porpoise",
   "Quail",
-  "Quelea",
-  "Quetzal",
   "Rabbit",
   "Raccoon",
-  "Rail",
   "Ram",
   "Rat",
   "Raven",
-  "Red deer",
-  "Red panda",
   "Reindeer",
   "Rhinoceros",
-  "Rook",
   "Salamander",
   "Salmon",
-  "Sand Dollar",
   "Sandpiper",
   "Sardine",
   "Scorpion",
@@ -188,17 +150,13 @@ var animals = [
   "Snake",
   "Sparrow",
   "Spider",
-  "Spoonbill",
   "Squid",
   "Squirrel",
   "Starling",
   "Stingray",
-  "Stinkbug",
   "Stork",
   "Swallow",
   "Swan",
-  "Tapir",
-  "Tarsier",
   "Termite",
   "Tiger",
   "Toad",
@@ -207,7 +165,6 @@ var animals = [
   "Turtle",
   "Viper",
   "Vulture",
-  "Wallaby",
   "Walrus",
   "Wasp",
   "Weasel",
@@ -215,24 +172,24 @@ var animals = [
   "Wildcat",
   "Wolf",
   "Wolverine",
-  "Wombat",
-  "Woodcock",
   "Woodpecker",
   "Worm",
-  "Wren",
   "Yak",
   "Zebra"
 ]
 
 chrome.runtime.onMessage.addListener(
-  function (request) {
-    if (request.message === "start") {
-      start();
+  function (request, sender, sendResponse) {
+    if (request.message === "goose") {
+      changeGooseImgs();
+    }
+    if (request.message === "text") {
+      changeAnimalText();
     }
   }
 );
 
-function start() {
+function changeGooseImgs() {
   var images = document.getElementsByTagName("img");
 
   for (var i = 0; i < images.length; ++i) {
@@ -240,11 +197,11 @@ function start() {
     images[i].srcset = goosePicture;
   }
 
-  console.log("hello")
+}
+
+function changeAnimalText() {
 
   var elements = document.getElementsByTagName('*');
-
-  console.log("helo2")
 
   for (var x = 0; x < animals.length; x++) {
     var replacer = new RegExp(animals[x], "gi");
@@ -270,5 +227,4 @@ function start() {
       }
     }
   }
-
 }
