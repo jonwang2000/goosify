@@ -1,0 +1,13 @@
+{
+    "name": "Inject DOM",
+    "description": "http://stackoverflow.com/questions/14068879",
+    "version": "1",
+    "manifest_version": 2,
+    "content_scripts": [{
+        "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+        "js": ["content.js"]
+    }],
+    "browser_action": {
+        "default_popup": "popup.html"
+    }
+}
