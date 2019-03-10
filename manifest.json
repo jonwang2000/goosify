@@ -1,6 +1,6 @@
 {
-    "name": "Inject DOM",
-    "description": "http://stackoverflow.com/questions/14068879",
+    "name": "Goosify",
+    "description": "Changes images and text to the almighty goose",
     "version": "1",
     "manifest_version": 2,
     "content_scripts": [{
@@ -9,5 +9,9 @@
     }],
     "browser_action": {
         "default_popup": "popup.html"
-    }
+    },
+    "icons": { "16": "icon16.png",
+        "32": "icon32.png",
+        "64": "icon64.png",
+       "128": "icon128.png" }
 }

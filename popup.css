@@ -1,0 +1,21 @@
+/* Stylesheet for Goosify popup */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+}
+
+.container {
+    text-align: center;
+    font-size: 15px;
+}
+
+.btn {
+    margin: 10px;
+    padding: 10px;
+}
+
+#goosePic {
+    padding: 5px;
+}
